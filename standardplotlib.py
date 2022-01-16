@@ -1,3 +1,7 @@
+#!C:\Program Files\Python310\python.exe
+print("content-type: text/html\n\n" )
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 
