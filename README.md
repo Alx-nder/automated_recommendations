@@ -12,6 +12,9 @@ price, count>       min, max, count
 location, count>    loc1, count
                     loc2, count
 run epsilon algo for recommendation
+        generate 2 random numbers between 0 and 1
+        if n1<'n2' randomly select from options
+        if n1>='n2' select highest count  
 select random or fixed from db where data = foo in db
 
 this does not ask what you are interested in, rather, it finds out
