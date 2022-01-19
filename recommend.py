@@ -64,8 +64,8 @@ def randomiz(nth,action):
 
       
 def epsilon1(mass,action):  
-  n1= random.random()
-  n2= random.random()
+  n1= random.uniform(0,1)
+  n2= random.uniform(0,1)
   print(n1, n2)
   if n1 > n2:
       randomiz(mass,action)
