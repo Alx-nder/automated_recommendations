@@ -1,3 +1,10 @@
+#!C:\Program Files\Python310\python.exe
+print("content-type: text/html\n\n" )
+
+
+import sys
+sys.path.append("C:\\Users\\tyree\\AppData\\Roaming\\Python\\Python310\\site-packages")
+
 import random
 
 from numpy import true_divide
@@ -5,6 +12,7 @@ from numpy import true_divide
 def highofhigh(firstnestedlist,action):
     
     if type(firstnestedlist[0]) != type([list]) and type(firstnestedlist[-1]== type(int)):
+    
         print(firstnestedlist)
         return firstnestedlist
     
@@ -47,6 +55,7 @@ mass=[price,address]
 def randomiz(nth,action):
     #prevent choosing last
     if type(nth[0]) != list and type(nth[-1]== int):
+      
         print(nth)
         return nth
     #check if first    
