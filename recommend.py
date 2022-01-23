@@ -75,7 +75,7 @@ def randomiz(nth,action):
 def epsilon1(mass,action):  
   n1= random.uniform(0,1)
   n2= random.uniform(0,1)
-  print(n1, n2)
+  #print(n1, n2)
   if n1 > n2:
       randomiz(mass,action)
   else:
@@ -83,4 +83,4 @@ def epsilon1(mass,action):
       
 
 epsilon1(mass,1)
-
+print (address,price)
