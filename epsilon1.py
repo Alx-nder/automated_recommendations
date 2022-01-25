@@ -13,7 +13,7 @@ def highofhigh(firstnestedlist,action):
     
     if type(firstnestedlist[0]) != type([list]) and type(firstnestedlist[-1]== type(int)):
     
-        print(firstnestedlist)
+        print(firstnestedlist[0])
         return firstnestedlist
     
     max=firstnestedlist[0][-1]
@@ -40,9 +40,9 @@ def highofhigh(firstnestedlist,action):
 
  
 #prices min, max, count
-p1=[7,10,2]
-p2=[3,6,1]
-p3=[1,2,3]
+p1=[10,10,2]
+p2=[10,6,1]
+p3=[10,2,3]
 
 a1=['va',2]
 a2=['md',1]
@@ -56,7 +56,7 @@ def randomiz(nth,action):
     #prevent choosing last
     if type(nth[0]) != list and type(nth[-1]== int):
       
-        print(nth)
+        print(nth[0])
         return nth
     #check if first    
     ###something weird happened here 
@@ -83,4 +83,3 @@ def epsilon1(mass,action):
       
 
 epsilon1(mass,1)
-print (address,price)
