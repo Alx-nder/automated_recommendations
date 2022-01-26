@@ -1,29 +1,33 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html\n\n" )
 
+import mysql.connector
+
+db=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    database="virttour"
+) 
+mycursor= db.cursor()
 
 import sys
 sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
 
 import random
 
-from numpy import true_divide
-
 def highofhigh(firstnestedlist,action):
     
     if type(firstnestedlist[0]) != type([list]) and type(firstnestedlist[-1]== type(int)):
     
         print(firstnestedlist[0])
-        return firstnestedlist
+        return firstnestedlist[0]
     
     max=firstnestedlist[0][-1]
     maxi=0
 
     for x in range(0, len(firstnestedlist)):
-        #is this necessary? it checks if nested
         if type(firstnestedlist[x]) != list and type(firstnestedlist[-1]== int):
             break
-
         elif firstnestedlist[x][-1] > max:
             max=firstnestedlist[x][-1]
             maxi=x
@@ -57,7 +61,7 @@ def randomiz(nth,action):
     if type(nth[0]) != list and type(nth[-1]== int):
       
         print(nth[0])
-        return nth
+        return nth[0]
     #check if first    
     ###something weird happened here 
     elif type(nth[-1])!= int:
@@ -82,4 +86,7 @@ def epsilon1(mass,action):
       highofhigh(mass,action)
       
 
-epsilon1(mass,1)
+rec=epsilon1(mass,1)
+mycursor.execute("select * From listings where price = rec OR address = rec")
+for x in mycursor:
+    print (x)
