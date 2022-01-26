@@ -1,6 +1,11 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html\n\n" )
 
+
+import sys
+sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
+
+import random
 import mysql.connector
 
 db=mysql.connector.connect(
@@ -10,10 +15,6 @@ db=mysql.connector.connect(
 ) 
 mycursor= db.cursor()
 
-import sys
-sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
-
-import random
 
 def highofhigh(firstnestedlist,action):
     
@@ -85,8 +86,9 @@ def epsilon1(mass,action):
   else:
       highofhigh(mass,action)
       
+epsilon1(mass,1)
 
-rec=epsilon1(mass,1)
-mycursor.execute("select * From listings where price = rec OR address = rec")
-for x in mycursor:
-    print (x)
+# rec=epsilon1(mass,1)
+# mycursor.execute("select * From listings where price = 'rec' OR add = 'rec'")
+# for x in mycursor:
+#     print (x)
