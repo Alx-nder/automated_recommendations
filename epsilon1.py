@@ -60,7 +60,6 @@ mass=[price,address]
 def randomiz(nth,action):
     #prevent choosing last
     if type(nth[0]) != list and type(nth[-1]== int):
-      
         print(nth[0])
         return nth[0]
     #check if first    
