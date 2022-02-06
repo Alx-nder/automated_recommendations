@@ -21,3 +21,7 @@ this does not ask what you are interested in, rather, it finds out
 
 hover could determine if specs are as important as looks and more
 offer a reset
+
+create db for interactions tied to user
+print array
+

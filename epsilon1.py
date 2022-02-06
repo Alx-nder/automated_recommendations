@@ -85,21 +85,18 @@ def epsilon1(grand_list,action):
   else:
       return highofhigh(grand_list,action)
       
-dwl=epsilon1(grand_list,1) 
-print(dwl)
-
+rec_instance=epsilon1(grand_list,1) 
 
 cursor = db.cursor()
 
 ## defining the Query
-query = "select * from listings where price = %s or add like %s"
+query = "select * from listings where price = %s"
 
 ## getting records from the table
-cursor.execute(query, (dwl,dwl ))
+cursor.execute(query, (rec_instance,))
 
 ## fetching all records from the 'cursor' object
 records = cursor.fetchall()
 
 ## Showing the data
-for record in records:
-    print(record)
+print(records)
