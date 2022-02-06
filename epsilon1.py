@@ -39,9 +39,8 @@ grand_list=[price,address]
 def highofhigh(nested_list,action):
 #base case -  if the list argument does not contain a nested list, return the first element of the current list and end.    
     if type(nested_list[0]) != type([list]) and type(nested_list[-1]== type(int)):
-        print(nested_list[0])
         return nested_list[0]
-    
+        
     interaction_count=nested_list[0][-1]
     max_index=0
     
@@ -56,26 +55,25 @@ def highofhigh(nested_list,action):
     nested_list[max_index][-1]+=action
     
     secondnestedlist=nested_list[max_index]
-    highofhigh(secondnestedlist, action)
+    return highofhigh(secondnestedlist, action)
 
 #function to randomly choose an item to display from nested lists
 def randomiz(nth,action):
     #prevent choosing last element - interaction count
     if type(nth[0]) != list and type(nth[-1]== int):
-        print(nth[0])
         return nth[0]
-    
+        
     #check if the list argument is the grand_list, which has no interaction count variable   
     elif type(nth[-1])!= int:
         first=random.choice(nth)
         #first is a list
         first[-1]+=action
-        randomiz(first,action)
+        return randomiz(first,action)
     #recursive
     else:    
         first = random.randrange(0,len(nth)-1)
         nth[first][-1]+=action
-        randomiz(nth[first],action)
+        return randomiz(nth[first],action)
 
 def epsilon1(grand_list,action):  
 #coin toss to choose recommendation form random or preferenced
@@ -83,8 +81,25 @@ def epsilon1(grand_list,action):
   n2= random.uniform(0,1)
   
   if n1 > n2:
-      randomiz(grand_list,action)
+      return randomiz(grand_list,action)
   else:
-      highofhigh(grand_list,action)
+      return highofhigh(grand_list,action)
       
-epsilon1(grand_list,1)
+dwl=epsilon1(grand_list,1) 
+print(dwl)
+
+
+cursor = db.cursor()
+
+## defining the Query
+query = "select * from listings where price = %s or add like %s"
+
+## getting records from the table
+cursor.execute(query, (dwl,dwl ))
+
+## fetching all records from the 'cursor' object
+records = cursor.fetchall()
+
+## Showing the data
+for record in records:
+    print(record)
