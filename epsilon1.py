@@ -6,6 +6,7 @@ sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-package
 
 #module to generate random numbers
 import random
+import json
 
 #module to manipulate sql database
 import mysql.connector
@@ -90,7 +91,7 @@ rec_instance=epsilon1(grand_list,1)
 cursor = db.cursor()
 
 ## defining the Query
-query = "select * from listings where price = %s"
+query = "select * from listings where price = %s;"
 
 ## getting records from the table
 cursor.execute(query, (rec_instance,))
@@ -99,4 +100,5 @@ cursor.execute(query, (rec_instance,))
 records = cursor.fetchall()
 
 ## Showing the data
+print(f"json: {json.dumps(records)}")
 print(records)
