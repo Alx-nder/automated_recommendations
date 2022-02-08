@@ -25,9 +25,9 @@ p2=[10,6,1]
 p3=[10,2,3]
 
 #addresses codes, interaction count
-a1=['va',2]
-a2=['md',1]
-a3=['ja',3]
+a1=[1,2]
+a2=[30,1]
+a3=[45,3]
 
 #list of prices and an interaction count
 price=[p1,p2,p3,0]
@@ -47,6 +47,7 @@ def highofhigh(nested_list,action):
     
 #traverses list to find the highest nested interaction count
     for x in range(0, len(nested_list)):
+        # end of nested
         if type(nested_list[x]) != list and type(nested_list[-1]== int):
             break
         elif nested_list[x][-1] > interaction_count:
@@ -83,6 +84,8 @@ def epsilon1(grand_list,action):
   
   if n1 > n2:
       return randomiz(grand_list,action)
+    # return highofhigh(grand_list,action)
+      
   else:
       return highofhigh(grand_list,action)
       
@@ -92,10 +95,10 @@ print(rec_instance)
 # cursor = db.cursor()
 
 ## defining the Query
-# query = "select * from listings where price = %s;"
+# query = "select * from listings where add = %s;"
 
 ## getting records from the table
-# cursor.execute(query, (rec_instance,))
+# cursor.execute(query, (rec_instance, ))
 
 ## fetching all records from the 'cursor' object
 # records = cursor.fetchall()
@@ -104,7 +107,7 @@ print(rec_instance)
 
 ## Showing the data
 # print(f"json: {json.dumps(records)}")
-# print(r)
+# print(records)
 
 # for record in records:
 #     print(json.dumps(record))
