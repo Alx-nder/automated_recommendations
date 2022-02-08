@@ -87,18 +87,25 @@ def epsilon1(grand_list,action):
       return highofhigh(grand_list,action)
       
 rec_instance=epsilon1(grand_list,1) 
+print(rec_instance)
 
-cursor = db.cursor()
+# cursor = db.cursor()
 
 ## defining the Query
-query = "select * from listings where price = %s;"
+# query = "select * from listings where price = %s;"
 
 ## getting records from the table
-cursor.execute(query, (rec_instance,))
+# cursor.execute(query, (rec_instance,))
 
 ## fetching all records from the 'cursor' object
-records = cursor.fetchall()
+# records = cursor.fetchall()
+
+# r = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
 
 ## Showing the data
-print(f"json: {json.dumps(records)}")
-print(records)
+# print(f"json: {json.dumps(records)}")
+# print(r)
+
+# for record in records:
+#     print(json.dumps(record))
+#     print (f"json: {json.dumps(record)}")
