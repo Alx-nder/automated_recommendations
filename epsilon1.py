@@ -42,7 +42,9 @@ def highofhigh(nested_list,action):
     if type(nested_list[0]) != type([list]) and type(nested_list[-1]== type(int)):
         return nested_list[0]
         
+    #we assume the first element has the highest interaction count 
     interaction_count=nested_list[0][-1]
+    #the position of the list with the higher/highest interaction count
     max_index=0
     
 #traverses list to find the highest nested interaction count
@@ -53,10 +55,11 @@ def highofhigh(nested_list,action):
         elif nested_list[x][-1] > interaction_count:
             interaction_count=nested_list[x][-1]
             max_index=x
+            
     #running action to update interaction count
     nested_list[max_index][-1]+=action
+    secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
     
-    secondnestedlist=nested_list[max_index]
     return highofhigh(secondnestedlist, action)
 
 #function to randomly choose an item to display from nested lists
