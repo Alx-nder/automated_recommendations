@@ -18,7 +18,7 @@ db=mysql.connector.connect(
     database="virttour"
 ) 
 mycursor= db.cursor()
- 
+
 #prices min, max, interaction count
 p1=[10,10,2]
 p2=[10,6,1]
@@ -83,9 +83,7 @@ def epsilon1(grand_list,action):
   n2= random.uniform(0,1)
   
   if n1 > n2:
-      return randomiz(grand_list,action)
-    # return highofhigh(grand_list,action)
-      
+      return randomiz(grand_list,action)   
   else:
       return highofhigh(grand_list,action)
       
