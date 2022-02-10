@@ -20,9 +20,9 @@ db=mysql.connector.connect(
 mycursor= db.cursor()
 
 #prices min, max, interaction count
-p1=[10,10,2]
-p2=[10,6,1]
-p3=[10,2,3]
+p1=[1125476,10,2]
+p2=[25140234,6,1]
+p3=[1052442,2,3]
 
 #addresses codes, interaction count
 a1=[1,2]

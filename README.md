@@ -25,3 +25,7 @@ offer a reset
 create db for interactions tied to user
 print array
 
+select all values in certain coloumn
+        add interaction 
+this is a list
+nest this list
