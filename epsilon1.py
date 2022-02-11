@@ -1,7 +1,9 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html\n\n" )
 
+from audioop import add
 import sys
+from traceback import print_exception
 sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
 
 #module to generate random numbers
@@ -17,12 +19,11 @@ db=mysql.connector.connect(
     user="root",
     database="virttour"
 ) 
-mycursor= db.cursor()
-
 #prices min, max, interaction count
 p1=[1125476,10,2]
 p2=[25140234,6,1]
 p3=[1052442,2,3]
+
 
 #addresses codes, interaction count
 a1=[1,2]
@@ -30,11 +31,39 @@ a2=[30,1]
 a3=[45,3]
 
 #list of prices and an interaction count
-price=[p1,p2,p3,0]
-
+# price=[p1,p2,p3,0]
+price=[]
 #list of addresses and an interaction count
-address=[a1,a2,a3,1]
+# address=[a1,a2,a3,1]
+address=[]
 grand_list=[price,address]
+
+mycursor= db.cursor()
+
+query="select location from listings"
+mycursor.execute(query)
+prec=mycursor.fetchall()
+
+# populating lists from db records
+for row in range(0,len(prec)):
+    address.append([[]])    
+    address[row][0]=prec[row][0]
+
+# interaction count
+address.append(4)
+
+query="select price from listings"
+
+mycursor.execute(query)
+prec=mycursor.fetchall()
+
+# populating list from db records
+for row in range(0,len(prec)):
+    price.append([[]])    
+    price[row][0]=prec[row][0]
+
+print(price)
+print(address)
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list,action):
