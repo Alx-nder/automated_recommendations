@@ -31,39 +31,39 @@ a2=[30,1]
 a3=[45,3]
 
 #list of prices and an interaction count
-# price=[p1,p2,p3,0]
-price=[]
+price=[p1,p2,p3,0]
+# price=[]
 #list of addresses and an interaction count
-# address=[a1,a2,a3,1]
-address=[]
+address=[a1,a2,a3,1]
+# address=[]
 grand_list=[price,address]
 
-mycursor= db.cursor()
+# mycursor= db.cursor()
 
-query="select location from listings"
-mycursor.execute(query)
-prec=mycursor.fetchall()
+# query="select location from listings"
+# mycursor.execute(query)
+# prec=mycursor.fetchall()
 
 # populating lists from db records
-for row in range(0,len(prec)):
-    address.append([[]])    
-    address[row][0]=prec[row][0]
+# for row in range(0,len(prec)):
+#     address.append([[]])    
+#     address[row][0]=prec[row][0]
 
-# interaction count
-address.append(4)
+# # interaction count
+# address.append(4)
 
-query="select price from listings"
+# query="select price from listings"
 
-mycursor.execute(query)
-prec=mycursor.fetchall()
+# mycursor.execute(query)
+# prec=mycursor.fetchall()
 
 # populating list from db records
-for row in range(0,len(prec)):
-    price.append([[]])    
-    price[row][0]=prec[row][0]
+# for row in range(0,len(prec)):
+#     price.append([[]])    
+#     price[row][0]=prec[row][0]
 
-print(price)
-print(address)
+# print(price)
+# print(address)
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list,action):
