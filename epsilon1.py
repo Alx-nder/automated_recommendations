@@ -1,7 +1,6 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html\n\n" )
 
-from audioop import add
 import sys
 from traceback import print_exception
 sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
