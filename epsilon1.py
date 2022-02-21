@@ -2,7 +2,6 @@
 print("content-type: text/html\n\n" )
 
 import sys
-from traceback import print_exception
 sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
 
 #module to generate random numbers
@@ -25,9 +24,9 @@ p3=[1052442,2,3]
 
 
 #addresses codes, interaction count
-a1=[1,2]
-a2=[30,1]
-a3=[45,3]
+a1=[1125476,2]
+a2=[25140234,1]
+a3=[1052442,3]
 
 #list of prices and an interaction count
 price=[p1,p2,p3,0]
@@ -119,25 +118,20 @@ def epsilon1(grand_list,action):
       return highofhigh(grand_list,action)
       
 rec_instance=epsilon1(grand_list,1) 
-print(rec_instance)
 
-# cursor = db.cursor()
+cursor = db.cursor()
 
-## defining the Query
-# query = "select * from listings where add = %s;"
+# defining the Query to select records from the db where values returned from the algo and values in the db match
+query = "select * from listings where price = %s or location=%s;"
 
-## getting records from the table
-# cursor.execute(query, (rec_instance, ))
+# getting records from the table
+cursor.execute(query, (rec_instance, rec_instance))
 
-## fetching all records from the 'cursor' object
-# records = cursor.fetchall()
+# storing all records from the 'cursor' object
+records = cursor.fetchall()
 
-# r = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+# Showing the one of the possible returned listings
+final_record=json.dumps(random.choice(records))
 
-## Showing the data
-# print(f"json: {json.dumps(records)}")
-# print(records)
+print(final_record)
 
-# for record in records:
-#     print(json.dumps(record))
-#     print (f"json: {json.dumps(record)}")
