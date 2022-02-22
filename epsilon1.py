@@ -132,6 +132,4 @@ records = cursor.fetchall()
 
 # Showing the one of the possible returned listings
 final_record=json.dumps(random.choice(records))
-
 print(final_record)
-
