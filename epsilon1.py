@@ -132,11 +132,13 @@ records = cursor.fetchall()
 
 # Showing the one of the possible returned listings
 # final_record=json.dumps(random.choice(records))
-final_record="var rec_dict=".__add__(json.dumps(random.choice(records)))
+js_final_record="var rec_dict=".__add__(json.dumps(random.choice(records)))
+final_record=json.dumps(random.choice(records))
+
 print(final_record)
 
-with open(r"C:\xampp\htdocs\virtualTourWebsite\reccomend.js","w") as file:
-    js_source_code=""
-    with open(r"C:\xampp\htdocs\virtualTourWebsite\java_script_code.txt","r") as source_code:
-        js_source_code=source_code.read()
-    file.write(final_record.__add__(js_source_code))
+# with open(r"C:\xampp\htdocs\virtualTourWebsite\reccomend.js","w") as file:
+#     js_source_code=""
+#     with open(r"C:\xampp\htdocs\virtualTourWebsite\java_script_code.txt","r") as source_code:
+#         js_source_code=source_code.read()
+#     file.write(final_record.__add__(js_source_code))
