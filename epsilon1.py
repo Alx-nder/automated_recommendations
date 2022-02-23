@@ -1,8 +1,8 @@
 #!C:\Program Files\Python310\python.exe
-print("content-type: text/html\n\n" )
+print("content-type: text/html;charset=utf-8\n\n" )
 
 import sys
-sys.path.append(r'''C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages''')
+sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 
 #module to generate random numbers
 import random
@@ -136,9 +136,3 @@ js_final_record="var rec_dict=".__add__(json.dumps(random.choice(records)))
 final_record=json.dumps(random.choice(records))
 
 print(final_record)
-
-# with open(r"C:\xampp\htdocs\virtualTourWebsite\reccomend.js","w") as file:
-#     js_source_code=""
-#     with open(r"C:\xampp\htdocs\virtualTourWebsite\java_script_code.txt","r") as source_code:
-#         js_source_code=source_code.read()
-#     file.write(final_record.__add__(js_source_code))
