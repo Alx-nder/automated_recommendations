@@ -36,6 +36,10 @@ db=mysql.connector.connect(
 #list of addresses and an interaction count
 # address=[a1,a2,a3,1]
 
+xd=[]
+variable_name = [k for k, v in locals().items() if v==xd][0] 
+print("Your variable name is " + variable_name)
+
 location=[]
 price=[]
 grand_list=[price,location]
@@ -43,7 +47,7 @@ grand_list=[price,location]
 mycursor= db.cursor()
 
 def db_to_list(db_table):
-    table_name=[ i for i, a in locals().items() if True][0]
+    table_name=[ i for i, a in locals().items() if a==db_table ][0]
     query=f"select {table_name} from listings"
     mycursor.execute(query)
     prec=mycursor.fetchall()
