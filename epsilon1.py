@@ -2,6 +2,8 @@
 print("content-type: text/html;charset=utf-8\n\n" )
 
 import sys
+
+from sqlalchemy import true
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 
 #module to generate random numbers
@@ -34,28 +36,27 @@ db=mysql.connector.connect(
 #list of addresses and an interaction count
 # address=[a1,a2,a3,1]
 
-
-
 location=[]
 price=[]
 grand_list=[price,location]
 
 mycursor= db.cursor()
 
-def db_to_list(table):
-    table_name=f'{table=}'.split('=')[0]
-    print(table_name)
+def db_to_list(db_table):
+    table_name=[ i for i, a in locals().items() if True][0]
     query=f"select {table_name} from listings"
     mycursor.execute(query)
     prec=mycursor.fetchall()
 
     # populating lists from db records
     for row in range(0,len(prec)):
-        table.append([[]])    
-        table[row][0]=prec[row][0]
+        db_table.append([[]])    
+        db_table[row][0]=prec[row][0]
 
 
 db_to_list(location)
+db_to_list(price)
+
 
 #to upload interaction data
 # for row in range(0,len):
