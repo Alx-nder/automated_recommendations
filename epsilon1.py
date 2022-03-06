@@ -18,50 +18,51 @@ db=mysql.connector.connect(
     database="virttour"
 ) 
 #prices min, max, interaction count
-p1=[1125476,10,2]
-p2=[25140234,6,1]
-p3=[1052442,2,3]
+# p1=[1125476,10,2]
+# p2=[25140234,6,1]
+# p3=[1052442,2,3]
 
 
 #addresses codes, interaction count
-a1=[1125476,2]
-a2=[25140234,1]
-a3=[1052442,3]
+# a1=[1125476,2]
+# a2=[25140234,1]
+# a3=[1052442,3]
 
 #list of prices and an interaction count
-price=[p1,p2,p3,0]
-# price=[]
+# price=[p1,p2,p3,0]
+
 #list of addresses and an interaction count
-address=[a1,a2,a3,1]
-# address=[]
-grand_list=[price,address]
+# address=[a1,a2,a3,1]
 
-# mycursor= db.cursor()
 
-# query="select location from listings"
-# mycursor.execute(query)
-# prec=mycursor.fetchall()
 
-# populating lists from db records
-# for row in range(0,len(prec)):
-#     address.append([[]])    
-#     address[row][0]=prec[row][0]
+location=[]
+price=[]
+grand_list=[price,location]
 
-# # interaction count
-# address.append(4)
+mycursor= db.cursor()
 
-# query="select price from listings"
+def db_to_list(table):
+    table_name=f'{table=}'.split('=')[0]
+    print(table_name)
+    query=f"select {table_name} from listings"
+    mycursor.execute(query)
+    prec=mycursor.fetchall()
 
-# mycursor.execute(query)
-# prec=mycursor.fetchall()
+    # populating lists from db records
+    for row in range(0,len(prec)):
+        table.append([[]])    
+        table[row][0]=prec[row][0]
 
-# populating list from db records
-# for row in range(0,len(prec)):
-#     price.append([[]])    
-#     price[row][0]=prec[row][0]
 
-# print(price)
-# print(address)
+db_to_list(location)
+
+#to upload interaction data
+# for row in range(0,len):
+    
+
+print(price)
+print(location)
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list,action):
@@ -122,10 +123,10 @@ rec_instance=epsilon1(grand_list,1)
 cursor = db.cursor()
 
 # defining the Query to select records from the db where values returned from the algo and values in the db match
-query = "select * from listings where price = %s or location=%s;"
+query = f"select * from listings where price = {rec_instance} or location={rec_instance};"
 
 # getting records from the table
-cursor.execute(query, (rec_instance, rec_instance))
+cursor.execute(query)
 
 # storing all records from the 'cursor' object
 records = cursor.fetchall()
