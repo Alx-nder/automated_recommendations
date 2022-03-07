@@ -20,54 +20,54 @@ db=mysql.connector.connect(
     database="virttour"
 ) 
 #prices min, max, interaction count
-# p1=[1125476,10,2]
-# p2=[25140234,6,1]
-# p3=[1052442,2,3]
+p1=[1125476,10,2]
+p2=[25140234,6,1]
+p3=[1052442,2,3]
 
 
 #addresses codes, interaction count
-# a1=[1125476,2]
-# a2=[25140234,1]
-# a3=[1052442,3]
+a1=[1125476,2]
+a2=[25140234,1]
+a3=[1052442,3]
 
 #list of prices and an interaction count
-# price=[p1,p2,p3,0]
+price=[p1,p2,p3,0]
 
 #list of addresses and an interaction count
-# address=[a1,a2,a3,1]
+location=[a1,a2,a3,1]
 
-xd=[]
-variable_name = [k for k, v in locals().items() if v==xd][0] 
-print("Your variable name is " + variable_name)
+# xd=[]
+# variable_name = [k for k, v in locals().items() if v==xd][0] 
+# print("Your variable name is " + variable_name)
 
-location=[]
-price=[]
+# location=[]
+# price=[]
 grand_list=[price,location]
 
-mycursor= db.cursor()
+# mycursor= db.cursor()
 
-def db_to_list(db_table):
-    table_name=[ i for i, a in locals().items() if a==db_table ][0]
-    query=f"select {table_name} from listings"
-    mycursor.execute(query)
-    prec=mycursor.fetchall()
+# def db_to_list(db_table):
+#     table_name=[ i for i, a in locals().items() if a==db_table ][0]
+#     query=f"select {table_name} from listings"
+#     mycursor.execute(query)
+#     prec=mycursor.fetchall()
 
-    # populating lists from db records
-    for row in range(0,len(prec)):
-        db_table.append([[]])    
-        db_table[row][0]=prec[row][0]
+#     # populating lists from db records
+#     for row in range(0,len(prec)):
+#         db_table.append([[]])    
+#         db_table[row][0]=prec[row][0]
 
 
-db_to_list(location)
-db_to_list(price)
+# db_to_list(location)
+# db_to_list(price)
 
 
 #to upload interaction data
 # for row in range(0,len):
     
 
-print(price)
-print(location)
+# print(price)
+# print(location)
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list,action):
