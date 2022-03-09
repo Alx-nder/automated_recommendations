@@ -30,5 +30,10 @@ select all values in certain coloumn
 this is a list
 nest this list
 
+for each user, 
+        append interaction to  element in list 
+        sum the interactions per similar column group 
+        append interaction per group
 
 add p value as a final test
+

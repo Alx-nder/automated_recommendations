@@ -1,6 +1,7 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html;charset=utf-8\n\n" )
 
+from code import interact
 import sys
 from sqlalchemy import true
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
@@ -54,9 +55,16 @@ def db_to_list(list_from_table, list_name):
 db_to_list(location,"location")
 db_to_list(price,"price")
 
-
+query="select * from user_pref"
+my_cursor.execute(query)
+preferences=my_cursor.fetchall()
+print(preferences)
 # to upload interaction data
-for row in range(0,len):
+for row in range(0,len(preferences)):
+    interactions=0
+    for x in preferences[row]:
+        x=+1
+        price[x].append(preferences[row][x])
     
     
 
