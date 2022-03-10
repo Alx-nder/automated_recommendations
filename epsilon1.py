@@ -1,15 +1,15 @@
 #!C:\Program Files\Python310\python.exe
-print("content-type: text/html;charset=utf-8\n\n" )
+print("content-type: text/html;\n\n" )
 
-from code import interact
 import sys
-from sqlalchemy import true
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
+
 import random
 import json
 import mysql.connector
 
-#connecting to database
+
+# connecting to database
 db=mysql.connector.connect(
     host="localhost",
     user="root",
@@ -27,44 +27,44 @@ a2=[25140234,1]
 a3=[1052442,3]
 
 #list of prices and an interaction count
-# price=[p1,p2,p3,0]
+price=[p1,p2,p3,0]
 
 #list of addresses and an interaction count
-# location=[a1,a2,a3,1]
+location=[a1,a2,a3,1]
 
 # xd=[]
 # variable_name = [k for k, v in locals().items() if v==xd][0] 
 # print("Your variable name is " + variable_name)
 
-location=[]
-price=[]
+# location=[]
+# price=[]
 grand_list=[price,location]
 
-my_cursor= db.cursor()
+# my_cursor= db.cursor()
 
-def db_to_list(list_from_table, list_name):
-    query=f"select {list_name} from listings"
-    my_cursor.execute(query)
-    updates=my_cursor.fetchall()
+# def db_to_list(list_from_table, list_name):
+#     query=f"select {list_name} from listings"
+#     my_cursor.execute(query)
+#     updates=my_cursor.fetchall()
 
-    # populating lists from db records
-    for row in range(0,len(updates)):
-        list_from_table.append([[]])    
-        list_from_table[row][0]=updates[row][0]
+#     # populating lists from db records
+#     for row in range(0,len(updates)):
+#         list_from_table.append([[]])    
+#         list_from_table[row][0]=updates[row][0]
 
-db_to_list(location,"location")
-db_to_list(price,"price")
+# db_to_list(location,"location")
+# db_to_list(price,"price")
 
-query="select * from user_pref"
-my_cursor.execute(query)
-preferences=my_cursor.fetchall()
-print(preferences)
-# to upload interaction data
-for row in range(0,len(preferences)):
-    interactions=0
-    for x in preferences[row]:
-        x=+1
-        price[x].append(preferences[row][x])
+# query="select * from user_pref"
+# my_cursor.execute(query)
+# preferences=my_cursor.fetchall()
+# print(preferences)
+# # to upload interaction data
+# for row in range(0,len(preferences)):
+#     interactions=0
+#     for x in preferences[row]:
+#         x=+1
+#         price[x].append(preferences[row][x])
     
     
 
@@ -142,5 +142,4 @@ records = cursor.fetchall()
 # final_record=json.dumps(random.choice(records))
 js_final_record="var rec_dict=".__add__(json.dumps(random.choice(records)))
 final_record=json.dumps(random.choice(records))
-
 print(final_record)
