@@ -17,20 +17,24 @@ db=mysql.connector.connect(
 ) 
 
 #prices min, max, interaction count
-p1=[1125476,10,2]
-p2=[25140234,6,1]
-p3=[1052442,2,3]
+p1=[3524432,2]
+p2=[25140234,1]
+p3=[1052442,3]
+p4=[3125476,3]
+p5=[1000000,3]
 
 #addresses codes, interaction count
 a1=[1125476,2]
 a2=[25140234,1]
 a3=[1052442,3]
+a4=[3524432,3]
+a5=[1000000,2]
 
 #list of prices and an interaction count
-price=[p1,p2,p3,0]
+price=[p1,p2,p3,p4,p5,0]
 
 #list of addresses and an interaction count
-location=[a1,a2,a3,1]
+location=[a1,a2,a3,a4,a5,1]
 
 # xd=[]
 # variable_name = [k for k, v in locals().items() if v==xd][0] 
@@ -139,7 +143,6 @@ cursor.execute(query)
 records = cursor.fetchall()
 
 # Showing the one of the possible returned listings
-# final_record=json.dumps(random.choice(records))
-js_final_record="var rec_dict=".__add__(json.dumps(random.choice(records)))
+
 final_record=json.dumps(random.choice(records))
 print(final_record)
