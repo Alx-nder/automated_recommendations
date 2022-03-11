@@ -7,6 +7,7 @@ sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages'
 import random
 import json
 import mysql.connector
+import cgi
 
 
 # connecting to database
@@ -145,4 +146,10 @@ records = cursor.fetchall()
 # Showing the one of the possible returned listings
 
 final_record=json.dumps(random.choice(records))
+
+
+# form=cgi.FieldStorage()
+# user_speech=form.getvalue("user_session")
+
 print(final_record)
+# print(user_speech)
