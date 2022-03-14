@@ -8,6 +8,12 @@ import random
 import json
 import mysql.connector
 import cgi
+import pandas as pd
+
+
+## recieveing the username as a vvariable from the ajax call
+form=cgi.FieldStorage()
+current_user=form.getvalue("message_py")
 
 
 # connecting to database
@@ -37,41 +43,33 @@ price=[p1,p2,p3,p4,p5,0]
 #list of addresses and an interaction count
 location=[a1,a2,a3,a4,a5,1]
 
-# xd=[]
-# variable_name = [k for k, v in locals().items() if v==xd][0] 
-# print("Your variable name is " + variable_name)
 
 # location=[]
 # price=[]
 grand_list=[price,location]
 
-# my_cursor= db.cursor()
+my_cursor= db.cursor()
 
-# def db_to_list(list_from_table, list_name):
-#     query=f"select {list_name} from listings"
-#     my_cursor.execute(query)
-#     updates=my_cursor.fetchall()
+def db_to_list(list_from_table, list_name):
+    query=f"select {list_name} from listings"
+    my_cursor.execute(query)
+    updates=my_cursor.fetchall()
 
-#     # populating lists from db records
-#     for row in range(0,len(updates)):
-#         list_from_table.append([[]])    
-#         list_from_table[row][0]=updates[row][0]
+    # populating lists from db records
+    for row in range(0,len(updates)):
+        list_from_table.append([[]])    
+        list_from_table[row][0]=updates[row][0]
 
-# db_to_list(location,"location")
-# db_to_list(price,"price")
+db_to_list(location,"location")
+db_to_list(price,"price")
 
-# query="select * from user_pref"
-# my_cursor.execute(query)
-# preferences=my_cursor.fetchall()
-# print(preferences)
-# # to upload interaction data
-# for row in range(0,len(preferences)):
-#     interactions=0
-#     for x in preferences[row]:
-#         x=+1
-#         price[x].append(preferences[row][x])
-    
-    
+
+query1="select * from user_pref"
+
+# pandas method 
+pref_data=pd.read_sql(query1,db)
+pref_data.set_index("username", inplace=True)
+
 
 # print(price)
 # print(location)
@@ -147,9 +145,4 @@ records = cursor.fetchall()
 
 final_record=json.dumps(random.choice(records))
 
-
-# form=cgi.FieldStorage()
-# user_speech=form.getvalue("user_session")
-
 print(final_record)
-# print(user_speech)
