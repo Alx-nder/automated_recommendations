@@ -3,18 +3,15 @@ print("content-type: text/html;\n\n" )
 
 import sys
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
-
 import random
 import json
 import mysql.connector
-import cgi
-import pandas as pd
-
+# import cgi
+# import pandas as pd
 
 ## recieveing the username as a vvariable from the ajax call
-form=cgi.FieldStorage()
-current_user=form.getvalue("message_py")
-
+# form=cgi.FieldStorage()
+# current_user=form.getvalue("message_py")
 
 # connecting to database
 db=mysql.connector.connect(
@@ -42,44 +39,14 @@ price=[p1,p2,p3,p4,p5,0]
 
 #list of addresses and an interaction count
 location=[a1,a2,a3,a4,a5,1]
-
-
-# location=[]
-# price=[]
 grand_list=[price,location]
-
-my_cursor= db.cursor()
-
-def db_to_list(list_from_table, list_name):
-    query=f"select {list_name} from listings"
-    my_cursor.execute(query)
-    updates=my_cursor.fetchall()
-
-    # populating lists from db records
-    for row in range(0,len(updates)):
-        list_from_table.append([[]])    
-        list_from_table[row][0]=updates[row][0]
-
-db_to_list(location,"location")
-db_to_list(price,"price")
-
-
-query1="select * from user_pref"
-
-# pandas method 
-pref_data=pd.read_sql(query1,db)
-pref_data.set_index("username", inplace=True)
-
-
-# print(price)
-# print(location)
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list,action):
 #base case -  if the list argument does not contain a nested list, return the first element of the current list and end.    
     if type(nested_list[0]) != type([list]) and type(nested_list[-1]== type(int)):
         return nested_list[0]
-        
+
     #we assume the first element has the highest interaction count 
     interaction_count=nested_list[0][-1]
     #the position of the list with the higher/highest interaction count
@@ -97,7 +64,6 @@ def highofhigh(nested_list,action):
     #running action to update interaction count
     nested_list[max_index][-1]+=action
     secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
-    
     return highofhigh(secondnestedlist, action)
 
 #function to randomly choose an item to display from nested lists
@@ -127,7 +93,7 @@ def epsilon1(grand_list,action):
       return randomiz(grand_list,action)   
   else:
       return highofhigh(grand_list,action)
-      
+
 rec_instance=epsilon1(grand_list,1) 
 
 cursor = db.cursor()
@@ -142,7 +108,5 @@ cursor.execute(query)
 records = cursor.fetchall()
 
 # Showing the one of the possible returned listings
-
 final_record=json.dumps(random.choice(records))
-
 print(final_record)
