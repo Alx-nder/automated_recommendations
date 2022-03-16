@@ -2,10 +2,12 @@
 print("content-type: text/html;\n\n" )
 
 import sys
+from tkinter import N
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 import random
 import json
 import mysql.connector
+import testingajax
 # import cgi
 # import pandas as pd
 
@@ -39,7 +41,8 @@ price=[p1,p2,p3,p4,p5,0]
 
 #list of addresses and an interaction count
 location=[a1,a2,a3,a4,a5,1]
-grand_list=[price,location]
+# grand_list=[price,location]
+grand_list=testingajax.main()
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list):
@@ -66,18 +69,16 @@ def highofhigh(nested_list):
 
 #function to randomly choose an item to display from nested lists
 def randomiz(nth):
-    #prevent choosing last element - interaction count
-    if type(nth[0]) != list and type(nth[-1]== int):
-        return nth[0]
+    if type(nth) is list:
+        #prevent choosing last element - interaction count
+        if (type(nth[0]) != list or type(nth[0]) == str) and type(nth[-1]) is int:
+            print(nth[0],'cow')
+            return nth[0]
+        else:
+            randomiz(random.choice(nth.pop()))       
         
-    #check if the list argument is the grand_list, which has no interaction count variable   
-    elif type(nth[-1])!= int:
-        first=random.choice(nth)
-        return randomiz(first)
-    #recursive
-    else:    
-        first = random.randrange(0,len(nth)-1)
-        return randomiz(nth[first])
+    else:
+        return(nth)
 
 def epsilon1(grand_list):  
 #coin toss to choose recommendation form random or preferenced
@@ -91,11 +92,16 @@ def epsilon1(grand_list):
 
 rec_instance=epsilon1(grand_list) 
 
+print(rec_instance,"tretrdgrdrg")
+
 cursor = db.cursor()
 
 # defining the Query to select records from the db where values returned from the algo and values in the db match
 ### use several parameters here than can chose from a consolidated price range
-query = f"select * from listings where price = {rec_instance} or location={rec_instance};"
+if type(rec_instance) is str:
+    query = f"select * from listings where location ='{rec_instance}';"
+else:
+    query = f"select * from listings where price>{rec_instance} and price<{rec_instance+100000};"
 
 # getting records from the table
 cursor.execute(query)
