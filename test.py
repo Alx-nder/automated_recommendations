@@ -12,6 +12,7 @@ db=mysql.connector.connect(
     database="virttour"
 )
 
+### accept ajax body
 # form=cgi.FieldStorage()
 # user_speech=form.getvalue("message_py")
 
@@ -19,7 +20,9 @@ db=mysql.connector.connect(
 
 
 location=[]
-price=[]
+
+#a variable to hold formatted/ tabbed prices in lists becuase we will get the interactions later
+price=[[0],[1000000],[2000000]]
 grand_list=[price,location]
 
 my_cursor= db.cursor()
@@ -36,9 +39,9 @@ def db_to_list(list_from_table, list_name):
         list_from_table[row][0]=updates[row][0]
 
 db_to_list(location,"location")
-db_to_list(price,"price")
+# db_to_list(price,"price")
 
-print(location,"\n\n",price)
+# print(location,"\n\n")
 
 
 # pandas method 
@@ -50,17 +53,21 @@ print(pref_data)
        
 for i in range(0,len(pref_data.columns)):
     if "loc" in pref_data.columns[i]:
-
         location[i-3].append(pref_data[pref_data.columns[i]]['t@y.com'])
     else:
-        price[i].append(pref_data[pref_data.columns[i]]['t@y.com'])    
-
+        price[i].append(pref_data[pref_data.columns[i]]['t@y.com'])   
+        
 print(location,"\n\n",price)
 
+#interaction count
 location.append(0)
-
 # use len()-1 because last element is a int-interaction
 for i in range(0,len(location)-1):
     location[-1]+=location[i][-1]
+
+price.append(0)
+# use len()-1 because last element is a int-interaction
+for i in range(0,len(price)-1):
+    price[-1]+=price[i][-1]
 
 print(location,"\n\n",price)
