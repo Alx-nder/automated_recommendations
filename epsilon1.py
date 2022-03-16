@@ -8,12 +8,6 @@ import random
 import json
 import mysql.connector
 import testingajax
-# import cgi
-# import pandas as pd
-
-## recieveing the username as a vvariable from the ajax call
-# form=cgi.FieldStorage()
-# current_user=form.getvalue("message_py")
 
 # connecting to database
 db=mysql.connector.connect(
@@ -22,27 +16,17 @@ db=mysql.connector.connect(
     database="virttour"
 ) 
 
-#prices min, max, interaction count
-p1=[3524432,2]
-p2=[25140234,1]
-p3=[1052442,3]
-p4=[3125476,3]
-p5=[1000000,3]
-
-#addresses codes, interaction count
-a1=[1125476,2]
-a2=[25140234,1]
-a3=[1052442,3]
-a4=[3524432,3]
-a5=[1000000,2]
-
-#list of prices and an interaction count
-price=[p1,p2,p3,p4,p5,0]
-
-#list of addresses and an interaction count
-location=[a1,a2,a3,a4,a5,1]
 # grand_list=[price,location]
 grand_list=testingajax.main()
+
+#function to randomly choose an item to display from nested lists
+def randomiz(nth):
+    if type(nth) is list:
+        #prevent choosing last element - interaction count
+        nth.pop(-1)
+        return randomiz(random.choice(nth))       
+    else:
+        return nth
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list):
@@ -69,16 +53,7 @@ def highofhigh(nested_list):
         return highofhigh(secondnestedlist)
     else:
         return(nested_list)
-#function to randomly choose an item to display from nested lists
-def randomiz(nth):
-    print(nth)
-    if type(nth) is list:
-        #prevent choosing last element - interaction count
-        print(nth)
-        nth.pop(-1)
-        return randomiz(random.choice(nth))       
-    else:
-        return nth
+
 
 def epsilon1(grand_list):  
 #coin toss to choose recommendation form random or preferenced
@@ -92,7 +67,7 @@ def epsilon1(grand_list):
 
 rec_instance=epsilon1(grand_list) 
 
-print(rec_instance,"tretrdgrdrg")
+print(rec_instance)
 
 cursor = db.cursor()
 

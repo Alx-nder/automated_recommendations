@@ -2,6 +2,7 @@
 print("content-type: text/html;\n\n" )
 
 
+# all code contained in main
 
 import sys
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
@@ -9,8 +10,8 @@ import cgi
 import pandas as pd
 import mysql.connector
 
-# all code contained in main
 def main():
+
     # connecting to database
     db=mysql.connector.connect(
         host="localhost",
@@ -21,28 +22,21 @@ def main():
     ## accept ajax body
     form=cgi.FieldStorage()
     username=form.getvalue("message_py")
-
+    username="guest"
+    print (username)
     location=[]
-
     #a variable to hold formatted/ tabbed prices in lists becuase we will get the interactions later
     price=[[0],[1000000],[2000000]]
-    # grand_list=[price,location]
 
     my_cursor= db.cursor()
-    # function that creates a list from the data in a specified table column 
-    def db_to_list(list_from_table, list_name):
-        # selecting and reading
-        query=f"select {list_name} from listings"
-        my_cursor.execute(query)
-        updates=my_cursor.fetchall()
-
-        # populating lists from db records
-        for row in range(0,len(updates)):
-            list_from_table.append([[]])    
-            list_from_table[row][0]=updates[row][0]
-
-    db_to_list(location,"location")
-
+    
+    query="select location from listings"
+    my_cursor.execute(query)
+    updates=my_cursor.fetchall()
+    # populating lists from db records
+    for row in range(0,len(updates)):
+        location.append([[]])    
+        location[row][0]=updates[row][0]
 
     # pandas method 
     query1="select * from user_pref"
@@ -51,9 +45,10 @@ def main():
         
     for i in range(0,len(pref_data.columns)):
         if "loc" in pref_data.columns[i]:
-            location[i-3].append(pref_data[pref_data.columns[i]]["t@y.com"])
+            ##list[i].append dataframe[col][row]
+            location[(i-3)].append(pref_data[ pref_data.columns[i]][f"{username}"])
         else:
-            price[i].append(pref_data[pref_data.columns[i]]["t@y.com"])   
+            price[i].append(pref_data[pref_data.columns[i]][f"{username}"])   
             
     #total interaction count
     location.append(0)
