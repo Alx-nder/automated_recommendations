@@ -47,38 +47,38 @@ grand_list=testingajax.main()
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list):
 #base case -  if the list argument does not contain a nested list, return the first element of the current list and end.    
-    if type(nested_list[0]) != type([list]) and type(nested_list[-1]== type(int)):
-        return nested_list[0]
-
-    #we assume the first element has the highest interaction count 
-    interaction_count=nested_list[0][-1]
-    #the position of the list with the higher/highest interaction count
-    max_index=0
-    
-#traverses list to find the highest nested interaction count
-    for x in range(0, len(nested_list)):
-        # end of nested
-        if type(nested_list[x]) != list and type(nested_list[-1]== int):
-            break
-        elif nested_list[x][-1] > interaction_count:
-            interaction_count=nested_list[x][-1]
-            max_index=x
-            
-    secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
-    return highofhigh(secondnestedlist)
-
+    if type(nested_list) is list:
+        ### use the -1 as escape
+        if nested_list[-1]==-1:
+            nested_list.pop()
+        #we assume the first element has the highest interaction count 
+        interaction_count=nested_list[0][-1]
+        #the position of the list with the higher/highest interaction count
+        max_index=0
+        
+    #traverses list to find the highest nested interaction count
+        for x in range(0, len(nested_list)):
+            # end of nested
+            if type(nested_list[x]) != list and type(nested_list[-1]== int):
+                break
+            elif nested_list[x][-1] > interaction_count:
+                interaction_count=nested_list[x][-1]
+                max_index=x
+                
+        secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
+        return highofhigh(secondnestedlist)
+    else:
+        return(nested_list)
 #function to randomly choose an item to display from nested lists
 def randomiz(nth):
+    print(nth)
     if type(nth) is list:
         #prevent choosing last element - interaction count
-        if (type(nth[0]) != list or type(nth[0]) == str) and type(nth[-1]) is int:
-            print(nth[0],'cow')
-            return nth[0]
-        else:
-            randomiz(random.choice(nth.pop()))       
-        
+        print(nth)
+        nth.pop(-1)
+        return randomiz(random.choice(nth))       
     else:
-        return(nth)
+        return nth
 
 def epsilon1(grand_list):  
 #coin toss to choose recommendation form random or preferenced
@@ -101,7 +101,7 @@ cursor = db.cursor()
 if type(rec_instance) is str:
     query = f"select * from listings where location ='{rec_instance}';"
 else:
-    query = f"select * from listings where price>{rec_instance} and price<{rec_instance+100000};"
+    query = f"select * from listings where price>{rec_instance};"
 
 # getting records from the table
 cursor.execute(query)

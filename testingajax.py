@@ -67,8 +67,9 @@ def main():
     for i in range(0,len(price)-1):
         price[-1]+=price[i][-1]
 
-    return [location, price]
+    return [location, price,-1]
 
 # script to prevent the program from running when importing 
 if __name__ == "__main__":
 	main()	
+print(main())
