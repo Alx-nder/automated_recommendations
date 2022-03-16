@@ -42,7 +42,7 @@ location=[a1,a2,a3,a4,a5,1]
 grand_list=[price,location]
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
-def highofhigh(nested_list,action):
+def highofhigh(nested_list):
 #base case -  if the list argument does not contain a nested list, return the first element of the current list and end.    
     if type(nested_list[0]) != type([list]) and type(nested_list[-1]== type(int)):
         return nested_list[0]
@@ -61,13 +61,11 @@ def highofhigh(nested_list,action):
             interaction_count=nested_list[x][-1]
             max_index=x
             
-    #running action to update interaction count
-    nested_list[max_index][-1]+=action
     secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
-    return highofhigh(secondnestedlist, action)
+    return highofhigh(secondnestedlist)
 
 #function to randomly choose an item to display from nested lists
-def randomiz(nth,action):
+def randomiz(nth):
     #prevent choosing last element - interaction count
     if type(nth[0]) != list and type(nth[-1]== int):
         return nth[0]
@@ -75,30 +73,28 @@ def randomiz(nth,action):
     #check if the list argument is the grand_list, which has no interaction count variable   
     elif type(nth[-1])!= int:
         first=random.choice(nth)
-        #first is a list
-        first[-1]+=action
-        return randomiz(first,action)
+        return randomiz(first)
     #recursive
     else:    
         first = random.randrange(0,len(nth)-1)
-        nth[first][-1]+=action
-        return randomiz(nth[first],action)
+        return randomiz(nth[first])
 
-def epsilon1(grand_list,action):  
+def epsilon1(grand_list):  
 #coin toss to choose recommendation form random or preferenced
   n1= random.uniform(0,1)
   n2= random.uniform(0,1)
   
   if n1 > n2:
-      return randomiz(grand_list,action)   
+      return randomiz(grand_list)   
   else:
-      return highofhigh(grand_list,action)
+      return highofhigh(grand_list)
 
-rec_instance=epsilon1(grand_list,1) 
+rec_instance=epsilon1(grand_list) 
 
 cursor = db.cursor()
 
 # defining the Query to select records from the db where values returned from the algo and values in the db match
+### use several parameters here than can chose from a consolidated price range
 query = f"select * from listings where price = {rec_instance} or location={rec_instance};"
 
 # getting records from the table
