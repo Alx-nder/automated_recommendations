@@ -1,5 +1,5 @@
 #!C:\Program Files\Python310\python.exe
-print("content-type: text/html;\n\n" )
+# print("content-type: text/html;\n\n" )
 
 
 # all code contained in main
@@ -10,20 +10,22 @@ import cgi
 import pandas as pd
 import mysql.connector
 
-def main():
+# ## accept ajax body
+# form=cgi.FieldStorage()
+# username=form.getvalue("message_py")
 
-    # connecting to database
-    db=mysql.connector.connect(
-        host="localhost",
-        user="root",
-        database="virttour"
-    )
 
-    ## accept ajax body
-    form=cgi.FieldStorage()
-    username=form.getvalue("message_py")
-    username="guest"
-    print (username)
+
+
+# connecting to database
+db=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    database="virttour"
+)
+
+def main(username):
+
     location=[]
     #a variable to hold formatted/ tabbed prices in lists becuase we will get the interactions later
     price=[[0],[1000000],[2000000]]
@@ -46,9 +48,9 @@ def main():
     for i in range(0,len(pref_data.columns)):
         if "loc" in pref_data.columns[i]:
             ##list[i].append dataframe[col][row]
-            location[(i-3)].append(pref_data[ pref_data.columns[i]][f"{username}"])
+            location[(i-3)].append(pref_data.at[ username, pref_data.columns[i]])
         else:
-            price[i].append(pref_data[pref_data.columns[i]][f"{username}"])   
+            price[i].append(pref_data.at[username, pref_data.columns[i]])   
             
     #total interaction count
     location.append(0)
@@ -67,4 +69,4 @@ def main():
 # script to prevent the program from running when importing 
 if __name__ == "__main__":
 	main()	
-print(main())
+# print(main(username))

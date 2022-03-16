@@ -8,6 +8,9 @@ import random
 import json
 import mysql.connector
 import testingajax
+import cgi
+import pandas as pd
+
 
 # connecting to database
 db=mysql.connector.connect(
@@ -16,8 +19,11 @@ db=mysql.connector.connect(
     database="virttour"
 ) 
 
-# grand_list=[price,location]
-grand_list=testingajax.main()
+
+## accept ajax body
+form=cgi.FieldStorage()
+username=form.getvalue("message_py")
+grand_list=testingajax.main(username)
 
 #function to randomly choose an item to display from nested lists
 def randomiz(nth):
@@ -66,8 +72,6 @@ def epsilon1(grand_list):
       return highofhigh(grand_list)
 
 rec_instance=epsilon1(grand_list) 
-
-print(rec_instance)
 
 cursor = db.cursor()
 
