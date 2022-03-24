@@ -80,7 +80,7 @@ cursor = db.cursor()
 if type(rec_instance) is str:
     query = f"select * from listings where location ='{rec_instance}';"
 else:
-    query = f"select * from listings where price>{rec_instance};"
+    query = f"select * from listings where price>{rec_instance} && price<{(rec_instance+1000000)} ;"
 
 # getting records from the table
 cursor.execute(query)
