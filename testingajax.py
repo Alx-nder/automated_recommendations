@@ -1,21 +1,15 @@
 #!C:\Program Files\Python310\python.exe
 # print("content-type: text/html;\n\n" )
 
+######      THIS SCRIPT IS USED TO CREATE A LIST THAT REFLECTS PREFERENCES AS SEEN IN THE USER_PREF TABLE OF THE DATABASE. ONLY HERE, THE PREFERENCES ARE PAIRED TO THE INDICATOR THEY REPRESENT I.E: (A_LOCATION,INTERACTION_COUNT)
 
-# all code contained in main
+
+# all code contained in main function becuase this script will be imported
 
 import sys
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
-import cgi
 import pandas as pd
 import mysql.connector
-
-# ## accept ajax body
-# form=cgi.FieldStorage()
-# username=form.getvalue("message_py")
-
-
-
 
 # connecting to database
 db=mysql.connector.connect(
@@ -46,7 +40,7 @@ def main(username):
     pref_data.set_index("username", inplace=True)
         
     for i in range(0,len(pref_data.columns)):
-        if "loc" in pref_data.columns[i]:
+        if "price" not in pref_data.columns[i]:
             ##list[i].append dataframe[col][row]
             location[(i-3)].append(pref_data.at[ username, pref_data.columns[i]])
         else:
@@ -68,5 +62,4 @@ def main(username):
 
 # script to prevent the program from running when importing 
 if __name__ == "__main__":
-	main()	
-# print(main(username))
+	main(None)
