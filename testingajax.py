@@ -42,7 +42,8 @@ def main(username):
     for i in range(0,len(pref_data.columns)):
         if "price" not in pref_data.columns[i]:
             ##list[i].append dataframe[col][row]
-            location[(i-3)].append(pref_data.at[ username, pref_data.columns[i]])
+            location[(i-3)][0]=pref_data.columns[i]
+            location[(i-3)].append(pref_data.at[username, pref_data.columns[i]])
         else:
             price[i].append(pref_data.at[username, pref_data.columns[i]])   
             
@@ -62,4 +63,6 @@ def main(username):
 
 # script to prevent the program from running when importing 
 if __name__ == "__main__":
-	main(None)
+	main("guest")
+
+# print(main("guest"))

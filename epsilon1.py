@@ -16,7 +16,8 @@ import pandas as pd
 db=mysql.connector.connect(
     host="localhost",
     user="root",
-    database="virttour"
+    database="virttour",
+    autocommit=True
 ) 
 
 
