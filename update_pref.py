@@ -15,7 +15,8 @@ import pandas as pd
 db=mysql.connector.connect(
     host="localhost",
     user="root",
-    database="virttour"
+    database="virttour",
+    autocommit=True
 )
 
 # ## accept ajax body
@@ -54,7 +55,7 @@ query=f"update user_pref set `{location_pref}`={location_interaction+1},`{price_
 cursor.execute(query)
 
 
-tquery=f"select * from user_pref where username='guest'"
+tquery=f"select * from user_pref where username='{current_user}'"
 cursor.execute(tquery)
 
 records =json.dumps(cursor.fetchall())
