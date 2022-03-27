@@ -3,8 +3,10 @@ print("content-type: text/html;\n\n" )
 
 
 import sys
-sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 
+
+sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
+import json
 import cgi
 import mysql.connector
 
@@ -17,14 +19,17 @@ db=mysql.connector.connect(
 
 ## accept ajax body
 form=cgi.FieldStorage()
-username=form.getvalue("message_py")
+username=json.loads(form.getvalue("message_py"))
 
-cursor = db.cursor()
-query=f"select * from user_pref where username='guest'"
+# cursor = db.cursor()
+
+# query=f"update user_pref set {} where username='guest'"
+# cursor.execute(query)
 
 
-cursor.execute(query)
+# query=f"select * from user_pref where username='guest'"
+# cursor.execute(query)
 
-records = cursor.fetchall()
+# records =json.dumps(cursor.fetchall()[0])
 
-print(records)
+print(username["card_location"])
