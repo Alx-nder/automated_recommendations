@@ -2,7 +2,6 @@
 print("content-type: text/html;\n\n" )
 
 import sys
-from tkinter import N
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 import random
 import json
