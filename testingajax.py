@@ -26,9 +26,13 @@ def main(username):
 
     my_cursor= db.cursor()
     
-    query="select location from listings"
+    query="select house_location from listings"
     my_cursor.execute(query)
-    updates=my_cursor.fetchall()
+    updates=my_cursor.fetchall()   
+    # remove duplicates 
+    updates=set(updates)
+    #back to list
+    updates=list(updates)
     # populating lists from db records
     for row in range(0,len(updates)):
         location.append([[]])    
