@@ -1,10 +1,7 @@
 #!C:\Program Files\Python310\python.exe
 print("content-type: text/html;\n\n" )
 
-
 import sys
-
-
 sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
 import json
 import cgi
@@ -37,27 +34,18 @@ pref_data.set_index("username", inplace=True)
 location_interaction=pref_data[location_pref][current_user]
 
 # consilidating prices based on tabs of 1,000,000
-if price_pref<1000000:
+if price_pref<=1000000:
     price_pref=pref_data.columns[0]
-elif price_pref>2000000 and price_pref<3000000:
+elif price_pref>1000000 and price_pref<=2999999:
     price_pref=pref_data.columns[1]
 else:
     price_pref=pref_data.columns[2]
 
 price_interaction=pref_data[price_pref][current_user]
 
-
 ### updating the interaction
-
 cursor = db.cursor()
 ##using backquotes in the event of non-conformant field names
+## updating preference data
 query=f"update user_pref set `{location_pref}`={location_interaction+1},`{price_pref}`={price_interaction+1} where username='{current_user}'"
 cursor.execute(query)
-
-
-tquery=f"select * from user_pref where username='{current_user}'"
-cursor.execute(tquery)
-
-records =json.dumps(cursor.fetchall())
-
-print(records)

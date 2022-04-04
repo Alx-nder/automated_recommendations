@@ -24,19 +24,18 @@ def main(username):
     #a variable to hold formatted/ tabbed prices in lists becuase we will get the interactions later
     price=[[0],[1000000],[2000000]]
 
-    my_cursor= db.cursor()
-    
+    my_cursor= db.cursor()    
     query="select house_location from listings"
     my_cursor.execute(query)
-    updates=my_cursor.fetchall()   
-    # remove duplicates 
-    updates=set(updates)
+    results=my_cursor.fetchall()   
+    # remove location duplicates 
+    results=set(results)
     #back to list
-    updates=list(updates)
-    # populating lists from db records
-    for row in range(0,len(updates)):
+    results=list(results)
+    # populating location lists from db records (results)
+    for row in range(0,len(results)):
         location.append([[]])    
-        location[row][0]=updates[row][0]
+        location[row][0]=results[row][0]
 
     # pandas method 
     query1="select * from user_pref"
@@ -68,5 +67,3 @@ def main(username):
 # script to prevent the program from running when importing 
 if __name__ == "__main__":
 	main("guest")
-
-# print(main("guest"))

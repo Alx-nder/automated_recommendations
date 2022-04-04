@@ -8,7 +8,6 @@ import json
 import mysql.connector
 import testingajax
 import cgi
-import pandas as pd
 
 
 # connecting to database
@@ -47,7 +46,6 @@ def highofhigh(nested_list):
         ### remove the last element, the interaction, because we cannot traverse an int like a list
         nested_list.pop()
         
-        
     #traverses list to find the highest nested interaction count
         for x in range(0, len(nested_list)):
             # end of nested
@@ -64,7 +62,7 @@ def highofhigh(nested_list):
 
 
 def epsilon1(grand_list):  
-#coin toss to choose recommendation form random or preferenced
+#coin toss to choose recommendation form - random or preferenced
   n1= random.uniform(0,1)
   n2= random.uniform(0,1)
   
@@ -72,6 +70,7 @@ def epsilon1(grand_list):
       return randomiz(grand_list)   
   else:
       return highofhigh(grand_list)
+
 
 rec_instance=epsilon1(grand_list) 
 
