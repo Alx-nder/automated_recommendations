@@ -22,16 +22,16 @@ db=mysql.connector.connect(
 ## accept ajax body
 form=cgi.FieldStorage()
 username=form.getvalue("message_py")
-grand_list=testingajax.main(username)
+grand_list=load_user.main(username)
 
 #function to randomly choose an item to display from nested lists
-def randomiz(nth):
-    if type(nth) is list:
+def randomiz(nested_list):
+    if type(nested_list) is list:
         #prevent choosing last element - interaction count
-        nth.pop(-1)
-        return randomiz(random.choice(nth))       
+        nested_list.pop(-1)
+        return randomiz(random.choice(nested_list))       
     else:
-        return nth
+        return nested_list
 
 #this function takes a list and integer as parameters, checks to see what item in the list has the highest interaction count then returns/ prints that item.
 def highofhigh(nested_list):
@@ -55,8 +55,8 @@ def highofhigh(nested_list):
                 interaction_count=nested_list[x][-1]
                 max_index=x
                 
-        secondnestedlist=nested_list[max_index] #declaring the list with highest interaction count
-        return highofhigh(secondnestedlist)
+        #restarting with the list that has a the highest interaction count
+        return highofhigh(nested_list[max_index])
     else:
         return nested_list
 
@@ -81,6 +81,7 @@ cursor = db.cursor()
 if type(rec_instance) is str:
     query = f"select * from listings where house_location ='{rec_instance}';"
 else:
+    # price within consolidated tab
     query = f"select * from listings where price>{rec_instance} && price<{(rec_instance+1000000)} ;"
 
 # getting records from the table
@@ -89,6 +90,5 @@ cursor.execute(query)
 # storing all records from the 'cursor' object
 records = cursor.fetchall()
 
-# Showing the one of the possible returned listings
-final_record=json.dumps(random.choice(records))
-print(final_record)
+# Showing a random one of the possible returned listings as a JSON object for use in the AJAX response
+print(json.dumps(random.choice(records)))
