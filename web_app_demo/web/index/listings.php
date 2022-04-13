@@ -41,10 +41,7 @@ if(!$con)
               <a class="nav-link active" aria-current="page" href="#">Buy</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost/recommendalgo/web_app_demo/web/seller/sell.php">Sell</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost/recommendalgo/web_app_demo/web/metaVerse/metaverse.php">METAverse</a>
+              <a class="nav-link" href="http://localhost/recommendalgo/web_app_demo/validations/login.php">Login</a>
             </li>
             <li>
               <a class="nav-link" id="logout" href="http://localhost/recommendalgo/web_app_demo/validations/logout.php">Logout</a>
