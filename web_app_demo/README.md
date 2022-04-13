@@ -6,8 +6,7 @@ This is a virtual tour app. Users can post real-estate listings so others can ta
 FOLDERS:
 
     API's: 
-    This folder contains scripts that implement a  decentraland API and a Zoom API. 
-        1. The decentraland API is used to get meta-data on NFT parcels for sale and also a link to enter the MetaVerse at that parcel.
+    This folder contains scripts that implement a Zoom API. 
         2. The Zoom API is used to create a zoom meeting so that several persons can explore a space at once but more importantly, so realtors/tech support can communicate with users at any time.
     
     chatbot_module: 
