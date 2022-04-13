@@ -19,10 +19,10 @@ $num = mysqli_num_rows($result);
 
 if($num==1){
     $_SESSION['email']=$email;
-    header('location:/virtualTourWebsite/listings.php');
+    header('location:/recommendAlgo/web_app_demo/web/index/listings.php');
 }
 else{
-    header('location:/virtualTourWebsite/login.php');
+    header('location:/recommendalgo/web_app_demo/validation/login.php');
 }
 
 ?>
