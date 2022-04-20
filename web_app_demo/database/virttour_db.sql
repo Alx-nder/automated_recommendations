@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2022 at 09:33 AM
+-- Generation Time: Apr 20, 2022 at 06:07 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -82,25 +82,26 @@ CREATE TABLE `listings` (
   `building_class` int(100) NOT NULL,
   `age` double NOT NULL,
   `land` double NOT NULL,
-  `posted_by` varchar(255) NOT NULL
+  `posted_by` varchar(255) NOT NULL,
+  `listings_interaction` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `listings`
 --
 
-INSERT INTO `listings` (`id`, `house_location`, `posted`, `house_description`, `price`, `image_src`, `tour_link`, `living_space`, `bathrooms`, `bedrooms`, `building_class`, `age`, `land`, `posted_by`) VALUES
-(1, 'grange', 'January 14 ', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugiat rerum consequatur. Eaque delectus voluptates aliquid temporibus quibusdam magni quidem, nesciunt hic atque laborum consequatur fugiat aut sunt dolores quam?', 3125476, 'https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/loft/index.html', 0.5, 2.5, 3, 3, 2, 2.3, 't@y.com'),
-(2, 'mandeville', 'February 19', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae amet obcaecati facere nam ducimus excepturi eum atque neque perspiciatis, delectus reiciendis tempora voluptas laboriosam consequuntur exercitationem quibusdam, in facilis temporibus.', 2140234, 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/riereta/index.html', 0.6, 3, 4, 3, 10, 0.5, 't@y.com'),
-(3, 'kingston', 'January 12', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet labore hic fugiat vitae id illum numquam quo voluptate, culpa voluptas nulla ipsa impedit expedita laborum ea corporis repellat? Placeat, illum?', 1052442, 'https://images.pexels.com/photos/1974596/pexels-photo-1974596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'http://localhost/vtour/tour.html', 0.25, 1, 2, 1, 6, 1.3, 't@y.com'),
-(4, 'lucea', 'December 30', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, quidem eaque? Laudantium cupiditate quibusdam molestias nulla, possimus quae nihil exercitationem temporibus ad atque quasi, error harum eos fuga consequuntur pariatur!', 3524432, 'https://images.pexels.com/photos/206768/pexels-photo-206768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'http://localhost/krpano_three_js_example/index.html', 0.5, 3.5, 4, 4, 5, 2, 'hello@hi.hey'),
-(5, 'manchester', 'February 12', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus expedita laboriosam molestiae, nam laudantium minus doloremque, nihil voluptatum aliquam dolor voluptas animi distinctio iure consequuntur ab odit necessitatibus, corrupti quod.', 900000, 'https://cdn.jhmrad.com/wp-content/uploads/properties-sale-egypt-primelocation_25987.jpg', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/iencuentro/index.html', 0.2, 2, 3, 1, 4, 0.25, 'hello@hi.hey'),
-(6, 'kingston', 'awdawd', 'rhdrggdrggrgdgd', 2500000, 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/hotspot-extract/pool.xml', 1, 2, 2, 2, 2, 2, 't@y.com'),
-(7, 'grange', '', '', 3741205, 'https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', 'https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', 0.5, 3, 4, 5, 2, 3, 'info.virttour@gmail.com'),
-(8, 'lucea', '', '', 997000, 'https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/interactive-area/interactive-area.xml', 0.5, 1.5, 2, 2, 8, 0.7, 'info.virttour@gmail.com'),
-(9, 'kingston', '', '', 2017504, 'https://images.unsplash.com/photo-1602075432748-82d264e2b463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'https://images.unsplash.com/photo-1602075432748-82d264e2b463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 0.6, 3, 2, 8, 4, 1.9, 'info.virttour@gmail.com'),
-(10, 'mandeville', '', '', 3000000, 'https://images.unsplash.com/photo-1605146768851-eda79da39897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'https://images.unsplash.com/photo-1605146768851-eda79da39897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 0.8, 3.5, 4, 5, 2, 1.8, 'info.virttour@gmail.com'),
-(11, 'kingston', '', '', 3258716, 'https://images.unsplash.com/photo-1623298317883-6b70254edf31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/demotour-apartment/tour.xml', 0.8, 3, 4, 5, 5, 2, 'info.virttour@gmail.com');
+INSERT INTO `listings` (`id`, `house_location`, `posted`, `house_description`, `price`, `image_src`, `tour_link`, `living_space`, `bathrooms`, `bedrooms`, `building_class`, `age`, `land`, `posted_by`, `listings_interaction`) VALUES
+(1, 'grange', 'January 14 ', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugiat rerum consequatur. Eaque delectus voluptates aliquid temporibus quibusdam magni quidem, nesciunt hic atque laborum consequatur fugiat aut sunt dolores quam?', 3125476, 'https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/loft/index.html', 0.5, 2.5, 3, 3, 2, 2.3, 't@y.com', 0),
+(2, 'mandeville', 'February 19', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae amet obcaecati facere nam ducimus excepturi eum atque neque perspiciatis, delectus reiciendis tempora voluptas laboriosam consequuntur exercitationem quibusdam, in facilis temporibus.', 2140234, 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/riereta/index.html', 0.6, 3, 4, 3, 10, 0.5, 't@y.com', 0),
+(3, 'kingston', 'January 12', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet labore hic fugiat vitae id illum numquam quo voluptate, culpa voluptas nulla ipsa impedit expedita laborum ea corporis repellat? Placeat, illum?', 1052442, 'https://images.unsplash.com/photo-1430285561322-7808604715df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'http://localhost/vtour/tour.html', 0.25, 1, 2, 1, 6, 1.3, 't@y.com', 0),
+(4, 'lucea', 'December 30', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, quidem eaque? Laudantium cupiditate quibusdam molestias nulla, possimus quae nihil exercitationem temporibus ad atque quasi, error harum eos fuga consequuntur pariatur!', 3524432, 'https://images.pexels.com/photos/206768/pexels-photo-206768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'http://localhost/krpano_three_js_example/index.html', 0.5, 3.5, 4, 4, 5, 2, 'hello@hi.hey', 0),
+(5, 'manchester', 'February 12', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus expedita laboriosam molestiae, nam laudantium minus doloremque, nihil voluptatum aliquam dolor voluptas animi distinctio iure consequuntur ab odit necessitatibus, corrupti quod.', 900000, 'https://cdn.jhmrad.com/wp-content/uploads/properties-sale-egypt-primelocation_25987.jpg', 'https://everpano.s3.eu-central-1.amazonaws.com/3d/iencuentro/index.html', 0.2, 2, 3, 1, 4, 0.25, 'hello@hi.hey', 0),
+(6, 'kingston', 'awdawd', 'rhdrggdrggrgdgd', 2500000, 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/hotspot-extract/pool.xml', 1, 2, 2, 2, 2, 2, 't@y.com', 0),
+(7, 'grange', '', '', 3741205, 'https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', 'https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', 0.5, 3, 4, 5, 2, 3, 'info.virttour@gmail.com', 0),
+(8, 'lucea', '', '', 997000, 'https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/interactive-area/interactive-area.xml', 0.5, 1.5, 2, 2, 8, 0.7, 'info.virttour@gmail.com', 0),
+(9, 'kingston', '', '', 2017504, 'https://images.unsplash.com/photo-1602075432748-82d264e2b463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'https://images.unsplash.com/photo-1602075432748-82d264e2b463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 0.6, 3, 2, 8, 4, 1.9, 'info.virttour@gmail.com', 0),
+(10, 'mandeville', '', '', 3000000, 'https://images.unsplash.com/photo-1605146768851-eda79da39897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'https://images.unsplash.com/photo-1605146768851-eda79da39897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 0.8, 3.5, 4, 5, 2, 1.8, 'info.virttour@gmail.com', 0),
+(11, 'kingston', '', '', 3258716, 'https://images.unsplash.com/photo-1623298317883-6b70254edf31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'http://localhost/krpano-1.20.11/viewer/krpano.html?xml=examples/demotour-apartment/tour.xml', 0.8, 3, 4, 5, 5, 2, 'info.virttour@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -177,9 +178,9 @@ CREATE TABLE `user_pref` (
 --
 
 INSERT INTO `user_pref` (`username`, `price_0`, `price_1`, `price_2`, `lucea`, `manchester`, `kingston`, `grange`, `mandeville`) VALUES
-('guest', 2, 4, 9, 1, 2, 12, 3, 3),
-('hello@hi.hey', 2, 6, 7, 2, 6, 10, 5, 0),
-('t@y.com', 5, 5, 2, 2, 4, 7, 1, 0);
+('guest', 3, 6, 4, 11, 3, 2, 4, 4),
+('hello@hi.hey', 7, 6, 7, 2, 11, 10, 5, 0),
+('t@y.com', 2, 5, 3, 2, 5, 4, 4, 7);
 
 --
 -- Indexes for dumped tables
@@ -235,7 +236,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
