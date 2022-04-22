@@ -35,6 +35,8 @@ def main(username):
     price=[[0],[1000000],[2000000]]
 
     my_cursor= db.cursor()    
+
+    # get the locations
     query="select house_location from listings"
     my_cursor.execute(query)
     results=my_cursor.fetchall()   
@@ -52,7 +54,7 @@ def main(username):
     pref_data=pd.read_sql(query1,db)
     pref_data.set_index("username", inplace=True)
         
-        #reading the interaction data then adding it to the list
+    #reading the interaction data then adding it to the list
     for i in range(0,len(pref_data.columns)):
         if "price" not in pref_data.columns[i]:
             ##list[i].append dataframe[col][row]
@@ -67,6 +69,8 @@ def main(username):
     for i in range(0,len(location)-1):
         location[-1]+=location[i][-1]
 
+    
+    # tallies
     #total interaction count - we need a tally of all interactions with prices
     price.append(0)
     # use len()-1 because last element is a int-interaction
