@@ -24,6 +24,7 @@ js_postdata=json.loads(form.getvalue("message_py"))
 location_pref=js_postdata["card_location"]
 price_pref=int(js_postdata["card_price"])
 current_user=js_postdata["username"]
+listings_id=int(js_postdata["listing_id"])
 
 
 query1="select * from user_pref"
@@ -45,7 +46,12 @@ price_interaction=pref_data[price_pref][current_user]
 
 ### updating the interaction
 cursor = db.cursor()
+# update count on the listing
+query=f"update listings set listings_interaction = (listings_interaction+1) where id='{listings_id}'"
+cursor.execute(query)
+
 ##using backquotes in the event of non-conformant field names
 ## updating preference data
 query=f"update user_pref set `{location_pref}`={location_interaction+1},`{price_pref}`={price_interaction+1} where username='{current_user}'"
 cursor.execute(query)
+
