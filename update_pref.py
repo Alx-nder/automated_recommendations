@@ -1,4 +1,4 @@
-#!C:\Program Files\Python310\python.exe
+#!C:\Users\Tyreek ALEXANDER\AppData\Local\Programs\Python\Python310\python.exe
 print("content-type: text/html;\n\n" )
 
 import sys
