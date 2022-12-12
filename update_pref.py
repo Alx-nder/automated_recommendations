@@ -2,7 +2,7 @@
 print("content-type: text/html;\n\n" )
 
 import sys
-sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
+sys.path.append(r'C:\Users\Tyreek ALEXANDER\AppData\Local\Programs\Python\Python310\Lib\site-packages')
 import json
 import cgi
 import mysql.connector

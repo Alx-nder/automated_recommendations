@@ -17,7 +17,7 @@
 
 # all code contained in main function becuase this script will be imported
 import sys
-sys.path.append(r'C:\Users\tyree\AppData\Roaming\Python\Python310\site-packages')
+sys.path.append(r'C:\Users\Tyreek ALEXANDER\AppData\Local\Programs\Python\Python310\Lib\site-packages')
 import pandas as pd
 import mysql.connector
 
@@ -39,11 +39,13 @@ def main(username):
     # get the locations
     query="select house_location from listings"
     my_cursor.execute(query)
-    results=my_cursor.fetchall()   
+    results=my_cursor.fetchall()  
+
     # remove location duplicates 
     results=set(results)
     #back to list
     results=list(results)
+    
     # populating location lists from db records (results) with the actual location names
     for row in range(0,len(results)):
         location.append([[]])    
