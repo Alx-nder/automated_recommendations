@@ -1,6 +1,6 @@
 **OVERVIEW**  
 
-This is an automated recommendation system which can work with small-scale web applications providing a few modifications. Being automated, the scripts coordinate the ETL process without much need for developer input.
+This is an automated CONTENT-FILTERING recommendation system which can work with small-scale web applications providing a few modifications. Being automated, the scripts coordinate the ETL process without much need for developer input.
 
 
 **CODE**
