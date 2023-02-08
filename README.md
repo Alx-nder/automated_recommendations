@@ -1,4 +1,5 @@
 **OVERVIEW**  
+Multi arm bandit
 
 This is an automated CONTENT-FILTERING recommendation system which can work with small-scale web applications providing a few modifications. Being automated, the scripts coordinate the ETL process without much need for developer input.
 
